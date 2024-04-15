@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+    <!-- Appender, Layout 설정 -->
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout/>
+        </Console>
+        <File name="file" fileName="./logs/file/sample.log" append="false">
+            <PatternLayout pattern="%d %5p [%c] %m%n"/>
+        </File>
+    </Appenders>
+
+    <!-- Logger 설정 -->
+    <Loggers>
+        <Logger name="com.zaxxer" level="DEBUG" additivity="false">
+            <AppenderRef ref="console"/>
+            <!--            <AppenderRef ref="file"/> 지금은 필요없어서 주석-->
+        </Logger>
+        <!--   요즘은 로그로 찍을 수 있다. "작업하는 패키지의 로그를 찍어라."    -->
+        <Logger name="com.djts" level="TRACE" additivity="false"> <!-- TRACE가 가장 낮은 레벨 -->
+            <AppenderRef ref="console"/>
+            <!--            <AppenderRef ref="file"/> 지금은 필요없어서 주석-->
+        </Logger>
+        <Root level="INFO"> <!-- 주로 INFO 레벨을 많이 씀-->
+            <AppenderRef ref="console"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
